@@ -1,0 +1,9 @@
+trip_id,source_file,split,reason
+00000056,Student folder\student_test\00000056\00000056.track,student_test,Only 0 valid GPS points
+00000021,Student folder\train\00000021\00000021.track,training,Only 0 valid GPS points
+00000025,Student folder\train\00000025\00000025.track,training,Only 0 valid GPS points
+00000037,Student folder\train\00000037\00000037.track,training,Only 0 valid GPS points
+00000042,Student folder\train\00000042\00000042.track,training,Only 0 valid GPS points
+00000047,Student folder\train\00000047\00000047.track,training,Only 0 valid GPS points
+00000096,Student folder\train\00000096\00000096.track,training,Only 0 valid GPS points
+00000099,Student folder\train\00000099\00000099.track,training,Only 0 valid GPS points
