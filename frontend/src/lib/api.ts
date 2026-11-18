@@ -4,6 +4,13 @@ export interface HealthResponse {
   status: string;
   model_name?: string;
   version?: string;
+  scoring_mode?: string;
+  model_loaded?: boolean;
+  dataset_available?: boolean;
+  evaluation_trip_count?: number;
+  road_network_files_available?: number;
+  ground_truth_files_available?: number;
+  ready_for_inference?: boolean;
 }
 
 export interface TripOption {
@@ -13,6 +20,16 @@ export interface TripOption {
 
 export type LatLon = [number, number];
 
+export interface EvaluationMetrics {
+  route_edge_precision: number;
+  route_edge_recall: number;
+  route_edge_f1: number;
+  sequence_similarity: number;
+  predicted_route_arc_count: number;
+  ground_truth_route_arc_count: number;
+  comparison_available: boolean;
+}
+
 export interface PredictionResponse {
   trip_id: string;
   gps_trace: LatLon[];
@@ -20,6 +37,10 @@ export interface PredictionResponse {
   road_network?: LatLon[][];
   inference_time_ms?: number;
   decoder?: string;
+  status?: string;
+  scoring_mode?: string;
+  warnings?: string[];
+  evaluation?: EvaluationMetrics | null;
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {

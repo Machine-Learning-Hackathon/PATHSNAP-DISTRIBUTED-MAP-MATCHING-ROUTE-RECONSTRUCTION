@@ -64,6 +64,11 @@ h1 { margin: 0; color: #F2EBDD; font-size: clamp(24px, 2.6vw, 31px); line-height
 .legend-line.unused { background: #686868; }
 .legend-node { width: 7px; height: 7px; border: 1px solid #F2EBDD; border-radius: 50%; background: #F2EBDD; }
 .result-meta { color: #858178; font-size: 10px; white-space: nowrap; }
+.evaluation-panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 18px; padding: 18px 0; border-bottom: 1px solid #242424; }
+.evaluation-panel div { display: flex; flex-direction: column; gap: 6px; }
+.evaluation-panel span { color: #858178; font-size: 9px; letter-spacing: .12em; }
+.evaluation-panel strong { color: #F2EBDD; font-size: 17px; font-weight: 500; }
+.evaluation-warning { grid-column: 1 / -1; margin: 0; color: #C9A77C; font-size: 11px; line-height: 1.5; }
 
 @media (max-width: 640px) {
   .topbar { height: 56px; }

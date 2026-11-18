@@ -1,0 +1,15 @@
+{
+  "evaluation_trips": 10,
+  "successful_reconstructions": 9,
+  "failed_trip_ids": [
+    "00000000"
+  ],
+  "success_rate": 0.9,
+  "mean_route_edge_precision": 0.8449579963137634,
+  "mean_route_edge_recall": 0.9921554160624806,
+  "mean_route_edge_f1": 0.9065172967284091,
+  "mean_sequence_similarity": 0.8402716333561108,
+  "mean_inference_time_ms": 3539.2383444446345,
+  "long_connected_fallback_transitions": 15,
+  "scoring_mode": "trained_model"
+}
