@@ -25,6 +25,7 @@ export default function App() {
       setHealth(status);
       setTrips(availableTrips);
       setSelectedTrip((current) => current || availableTrips[0]?.trip_id || "");
+      if (status.ready_for_inference === false) setError("The API is reachable, but its model, evaluation data, or road-network files are not ready.");
     } catch (e) {
       setHealth(null);
       setError(e instanceof Error ? e.message : "Could not connect to the inference API.");
@@ -52,7 +53,7 @@ export default function App() {
   return <main className="app-shell">
     <header className="topbar">
       <a className="wordmark" href="/">pathsnap<span>.</span></a>
-      <div className="connection"><i className={health ? "online" : "offline"}/>{health ? "CONNECTED" : "DISCONNECTED"}</div>
+      <div className="connection"><i className={health?.ready_for_inference === false || !health ? "offline" : "online"}/>{!health ? "DISCONNECTED" : health.ready_for_inference === false ? "NOT READY" : "CONNECTED"}</div>
     </header>
     <section className="workspace">
       <div className="intro">
@@ -64,7 +65,7 @@ export default function App() {
           {!trips.length && <option value="">No evaluation trips available</option>}
           {trips.map((trip) => <option key={trip.trip_id} value={trip.trip_id}>{trip.label ?? trip.trip_id}</option>)}
         </select>
-        <button onClick={reconstruct} disabled={!health || !selectedTrip || loading}>{loading ? "Reconstructing…" : "Reconstruct route"}</button>
+        <button onClick={reconstruct} disabled={!health || health.ready_for_inference === false || !selectedTrip || loading}>{loading ? "Reconstructing…" : "Reconstruct route"}</button>
       </div>
       {error && <p className="error" role="alert">{error}</p>}
       <section className="map-panel" aria-label="Route map">
@@ -84,6 +85,14 @@ export default function App() {
         </div>
         {result && <span className="result-meta">{route.length} route nodes{result.inference_time_ms != null ? ` · ${Math.round(result.inference_time_ms)} ms` : ""}</span>}
       </footer>
+      {result?.evaluation && <section className="evaluation-panel" aria-label="Route evaluation metrics">
+        <div><span>EDGE PRECISION</span><strong>{(result.evaluation.route_edge_precision * 100).toFixed(1)}%</strong></div>
+        <div><span>EDGE RECALL</span><strong>{(result.evaluation.route_edge_recall * 100).toFixed(1)}%</strong></div>
+        <div><span>EDGE F1</span><strong>{(result.evaluation.route_edge_f1 * 100).toFixed(1)}%</strong></div>
+        <div><span>SEQUENCE SIMILARITY</span><strong>{(result.evaluation.sequence_similarity * 100).toFixed(1)}%</strong></div>
+        <div><span>SCORING</span><strong>{result.scoring_mode ?? "unknown"}</strong></div>
+        {!!result.warnings?.length && <p className="evaluation-warning">{result.warnings.join(" · ")}</p>}
+      </section>}
     </section>
   </main>;
 }

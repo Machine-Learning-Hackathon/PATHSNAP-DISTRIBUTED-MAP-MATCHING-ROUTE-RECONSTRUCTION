@@ -1,0 +1,1 @@
+"""PATHSNAP FastAPI backend package."""

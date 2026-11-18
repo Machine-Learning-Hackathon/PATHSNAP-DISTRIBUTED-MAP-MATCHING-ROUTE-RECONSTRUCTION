@@ -1,0 +1,17 @@
+{
+  "features": [
+    "distance_m",
+    "heading_cos",
+    "heading_sin",
+    "length_m",
+    "step_distance_m",
+    "turn_cos",
+    "turn_sin"
+  ],
+  "candidate_id_column": "candidate_id",
+  "coordinates": "[latitude, longitude]",
+  "classes": {
+    "0": "not aligned ground-truth route arc",
+    "1": "ordered route-aligned arc"
+  }
+}

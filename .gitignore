@@ -8,3 +8,6 @@ __pycache__/
 Thumbs.db
 dataset/
 reports/features/
+node_modules/
+dist/
+*.tsbuildinfo

@@ -1,0 +1,16 @@
+{
+  "selected_model": "extra_trees",
+  "seed": 42,
+  "feature_columns": [
+    "distance_m",
+    "heading_cos",
+    "heading_sin",
+    "length_m",
+    "step_distance_m",
+    "turn_cos",
+    "turn_sin"
+  ],
+  "positive_class": 1,
+  "validation_split": "GroupShuffleSplit by trip_id, 25% held out",
+  "tuning": "Optuna TPE, 12 trials, GroupKFold(3)"
+}
