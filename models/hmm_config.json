@@ -1,0 +1,8 @@
+{
+  "candidate_radius_m": 80.0,
+  "max_candidates": 8,
+  "gps_sigma_m": 20.0,
+  "transition_beta_m": 30.0,
+  "heading_weight": 0.35,
+  "max_graph_expansions": 100000
+}
